@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>IBAN Kaydet - Paylaş – Gizlilik Politikası</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
+        -system-ui, sans-serif;
+      background: #f7f7fb;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .back-link {
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px 18px 4px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      margin-top: 4px;
+    }
+
+    h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      margin-top: 6px;
+    }
+
+    p {
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    ul {
+      margin: 0 0 8px 18px;
+      padding: 0;
+      color: var(--text-main);
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    footer {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="title-block">
+        <h1>Gizlilik Politikası</h1>
+        <div class="subtitle">IBAN Kaydet - Paylaş iOS uygulaması için gizlilik bilgileri</div>
+      </div>
+      <a href="index.html" class="back-link">← Ana sayfaya dön</a>
+    </header>
+
+    <div class="card">
+      <p>
+        Bu Gizlilik Politikası, <strong>IBAN Kaydet - Paylaş</strong> iOS uygulamasını kullanırken kişisel verilerinizin
+        nasıl işlendiğini açıklar. Uygulamayı kullanarak, bu politikada açıklanan veri işleme faaliyetlerini kabul etmiş
+        olursunuz.
+      </p>
+      <p class="muted">
+        Son güncelleme tarihi: <span id="date"></span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Uygulama kapsamında toplanan veriler</h2>
+
+      <h3>1.1. Kullanıcı tarafından girilen veriler</h3>
+      <p>
+        Uygulama içerisinde manuel olarak girdiğiniz veya metin/görsel üzerinden eklediğiniz:
+      </p>
+      <ul>
+        <li>IBAN numaraları</li>
+        <li>Kişi adları veya açıklamalar</li>
+        <li>IBAN’lara ait not ve etiket bilgileri</li>
+      </ul>
+      <p>
+        bu uygulama kapsamında işlenebilir. Bu veriler, varsayılan olarak yalnızca cihazınızda
+        yerel olarak saklanmak üzere tasarlanmıştır.
+      </p>
+
+      <h3>1.2. Kullanım verileri</h3>
+      <p>
+        Uygulama, kullanım deneyimini iyileştirmek ve hataları tespit etmek amacıyla sınırlı ölçüde
+        anonim veya anonimleştirilmiş kullanım verileri toplayabilir (örneğin uygulamanın hangi ekranlarının daha sık kullanıldığı, hata durumları vb.).
+      </p>
+
+      <h3>1.3. Reklam ve analiz verileri (AdMob)</h3>
+      <p>
+        Uygulama, Google tarafından sunulan <strong>AdMob</strong> reklam hizmetini kullanmaktadır.
+        AdMob, kişisel verilerinizi ve cihaz bilgilerinizi kendi gizlilik politikası çerçevesinde işleyebilir.
+        Bu kapsamda aşağıdaki tür veriler işlenebilir:
+      </p>
+      <ul>
+        <li>Cihaz tanımlayıcıları (ör. reklam kimliği)</li>
+        <li>Kabaca konum bilgisi (şehir/bölge düzeyi)</li>
+        <li>Reklam gösterimi ve tıklama bilgileri</li>
+        <li>Uygulama sürümü, kullanılan platform gibi teknik bilgiler</li>
+      </ul>
+      <p>
+        Google AdMob’un veri işleme süreçleri hakkında detaylı bilgi için lütfen Google’ın
+        güncel gizlilik politikasını inceleyin:
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          https://policies.google.com/privacy
+        </a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>2. Verilerin kullanım amaçları</h2>
+      <p>Toplanan veriler aşağıdaki amaçlarla kullanılabilir:</p>
+      <ul>
+        <li>IBAN bilgilerini kaydetme, düzenleme ve kullanıcıya geri gösterme</li>
+        <li>Uygulamanın temel işlevlerini sunma ve iyileştirme</li>
+        <li>Hata tespiti ve performans iyileştirmeleri</li>
+        <li>Reklam gösterimi (AdMob aracılığıyla)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>3. Verilerin üçüncü taraflarla paylaşımı</h2>
+      <p>
+        IBAN Kaydet - Paylaş, IBAN kayıtlarınızı ve kişi notlarınızı doğrudan üçüncü taraflara satmaz veya pazarlama amacıyla paylaşmaz.
+      </p>
+      <p>
+        Ancak, reklam ve analiz hizmetleri için kullanılan <strong>Google AdMob</strong> gibi üçüncü taraf sağlayıcılar,
+        kendi SDK’ları ve altyapıları üzerinden veri toplayabilir. Bu veriler, ilgili üçüncü tarafların
+        kendi gizlilik politikalarına tabidir.
+      </p>
+      <p>
+        Uygulama, zorunlu olması hâlinde (örneğin yasal yükümlülükler) ilgili kamu kurum ve kuruluşlarına veri aktarımı yapabilir.
+      </p>
