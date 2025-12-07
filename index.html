@@ -3,572 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <title>IBAN Kaydet - Paylaş</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="IBAN Kaydet - Paylaş ile kendi IBAN’ını ve para gönderdiğin herkesin IBAN bilgilerini güvenle sakla, kolayca paylaş. Metinden ve görselden IBAN tanıma özellikli pratik bir iOS uygulaması."
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IBAN Kaydet - Paylaş ile IBAN bilgilerini güvenle saklayın ve hızlıca paylaşın." />
   <style>
-    :root {
-      --bg: #f7f7fb;
-      --card: #ffffff;
-      --accent: #2563eb;
-      --accent-soft: #e0ebff;
-      --text-main: #111827;
-      --text-muted: #6b7280;
-      --border: #e5e7eb;
-      --radius-lg: 18px;
-      --radius-full: 999px;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
-        -system-ui, sans-serif;
-      background: radial-gradient(circle at top, #eef3ff 0, #f7f7fb 40%, #f7f7fb 100%);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px 16px 48px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-circle {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-full);
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      background: #f5f7fb;
+      color: #111827;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 18px;
+      padding: 16px;
     }
 
-    .logo-text {
+    .page {
+      background: #ffffff;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      padding: 24px 20px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
-      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      color: #4b5563;
     }
 
     .tagline {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .nav {
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-    }
-
-    .nav a {
-      padding: 6px 10px;
-      border-radius: 999px;
-    }
-
-    .nav a:hover {
-      background-color: rgba(37, 99, 235, 0.06);
-      text-decoration: none;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    @media (max-width: 800px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-    }
-
-    .hero-title {
-      font-size: clamp(26px, 3vw, 32px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-    }
-
-    .hero-highlight {
       display: inline-block;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 14px;
-    }
-
-    .hero-text {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .hero-list {
-      list-style: none;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-      color: var(--text-main);
-    }
-
-    .hero-bullet {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      margin-top: 7px;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .hero-btn {
-      border: none;
-      border-radius: var(--radius-full);
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
-      color: #ffffff;
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.2);
-      transition: transform 0.05s ease, box-shadow 0.05s ease;
-    }
-
-    .hero-btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.24);
-    }
-
-    .hero-note {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .device-card {
-      background: var(--card);
-      border-radius: 28px;
-      padding: 16px;
-      box-shadow:
-        0 18px 45px rgba(15, 23, 42, 0.15),
-        0 0 0 1px rgba(148, 163, 184, 0.12);
-      max-width: 360px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .device-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .device-pill {
-      padding: 4px 9px;
-      border-radius: var(--radius-full);
-      background: #f3f4ff;
-      color: #4f46e5;
-      font-weight: 500;
-      font-size: 11px;
-    }
-
-    .device-main {
-      background: #f3f4ff;
-      border-radius: 22px;
-      padding: 14px;
-    }
-
-    .device-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .device-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .device-iban {
-      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-      font-size: 12px;
-      padding: 8px 10px;
-      background: #ffffff;
-      border-radius: 12px;
-      border: 1px dashed rgba(79, 70, 229, 0.4);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .copy-pill {
-      border-radius: var(--radius-full);
-      border: none;
-      padding: 4px 9px;
-      font-size: 11px;
-      background: #4f46e5;
-      color: #ffffff;
-      cursor: default;
-    }
-
-    .device-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    .chip {
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: #e5e7ff;
-      color: #4338ca;
-    }
-
-    .chip.secondary {
-      background: #e5f3ff;
-      color: #1d4ed8;
-    }
-
-    .device-footer {
       margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .badge-row {
-      display: flex;
-      gap: 6px;
-    }
-
-    .small-badge {
-      padding: 3px 7px;
+      padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-    }
-
-    .floating-card {
-      position: absolute;
-      bottom: -22px;
-      right: 10px;
-      background: var(--card);
-      border-radius: 14px;
-      padding: 8px 10px;
-      box-shadow: 0 10px 35px rgba(15, 23, 42, 0.25);
-      font-size: 11px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .floating-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #22c55e;
+      background: #e5f0ff;
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      font-weight: 500;
     }
 
     .section {
-      margin-top: 56px;
+      margin-top: 18px;
     }
 
-    .section-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
+    .section h2 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: #111827;
     }
 
-    .section-text {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-      max-width: 700px;
+    .section p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.55;
+      margin-bottom: 6px;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+    ul {
+      list-style: none;
+      margin-top: 8px;
     }
 
-    .feature-card {
-      background: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 14px 16px;
-      border: 1px solid var(--border);
-      font-size: 14px;
-    }
-
-    .feature-title {
-      font-weight: 600;
+    li {
+      font-size: 0.9rem;
+      color: #374151;
+      padding-left: 14px;
+      position: relative;
       margin-bottom: 4px;
-      font-size: 14px;
     }
 
-    .feature-body {
-      font-size: 13px;
-      color: var(--text-muted);
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #2563eb;
     }
 
     footer {
-      margin-top: 48px;
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
-      font-size: 12px;
-      color: var(--text-muted);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 18px;
+      padding-top: 10px;
+      font-size: 0.8rem;
+      color: #6b7280;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       gap: 8px;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .links a {
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 18px 14px 16px;
+        border-radius: 12px;
+      }
+      header h1 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div class="logo">
-        <div class="logo-circle">I</div>
-        <div>
-          <div class="logo-text">IBAN Kaydet - Paylaş</div>
-          <div class="tagline">IBAN’ların tek yerde, güvenle saklanır.</div>
-        </div>
-      </div>
-      <nav class="nav">
-        <a href="#ozellikler">Özellikler</a>
-        <a href="#iletisim">İletişim</a>
-        <a href="privacy.html">Gizlilik Politikası</a>
-      </nav>
+      <h1>IBAN Kaydet - Paylaş</h1>
+      <p>IBAN’larını güvenle sakla, ihtiyaç anında tek dokunuşla paylaş.</p>
+      <div class="tagline">Hızlı, basit, güvenli IBAN yönetimi</div>
     </header>
 
     <main>
-      <section>
-        <div class="hero-highlight">iOS için basit ve güvenli IBAN yöneticisi</div>
-        <h1 class="hero-title">
-          Kendinin ve para gönderdiğin herkesin IBAN’ı
-          <br />tek uygulamada, düzenli dursun.
-        </h1>
-        <p class="hero-text">
-          Notlar, ekran görüntüleri, eski mesajlar arasında IBAN arama derdine son ver.
-          IBAN Kaydet - Paylaş ile kendi hesaplarını ve para gönderdiğin kişilerin tüm IBAN’larını
-          kolayca kaydet, bul ve paylaş.
+      <section class="section">
+        <h2>Uygulama Nedir?</h2>
+        <p>
+          IBAN Kaydet - Paylaş, sık kullandığın IBAN bilgilerini düzenli ve güvenli bir şekilde saklamanı,
+          ihtiyacın olduğunda ise saniyeler içinde kopyalayıp paylaşmanı sağlayan hafif bir mobil uygulamadır.
         </p>
-
-        <ul class="hero-list">
-          <li>
-            <span class="hero-bullet"></span>
-            <span>Her kişi için birden fazla IBAN sakla ve etiketlerle düzenle.</span>
-          </li>
-          <li>
-            <span class="hero-bullet"></span>
-            <span>Metinden ve ekran görüntüsünden IBAN’ları otomatik algıla.</span>
-          </li>
-          <li>
-            <span class="hero-bullet"></span>
-            <span>Tek dokunuşla kopyala veya paylaş; IBAN tekrar tekrar yazma.</span>
-          </li>
-        </ul>
-
-        <div class="hero-cta-row">
-          <button class="hero-btn" type="button">
-            Yakında App Store’da
-          </button>
-          <div class="hero-note">
-            Uygulama iOS için tasarlanmıştır. App Store bağlantısı yakında eklenecektir.
-          </div>
-        </div>
       </section>
 
-      <aside>
-        <div class="device-card" aria-hidden="true">
-          <div class="device-top">
-            <span>IBAN Kaydet - Paylaş</span>
-            <span class="device-pill">Örnek ekran</span>
-          </div>
-          <div class="device-main">
-            <div class="device-title">
-              <span>Ayşe Yılmaz</span>
-              <span style="font-size:11px; color:#6b7280;">2 IBAN</span>
-            </div>
-            <div class="device-label">Ana hesap</div>
-            <div class="device-iban">
-              <span>TR12 3456 7890 1234 5678 9012 34</span>
-              <button class="copy-pill" type="button">Kopyala</button>
-            </div>
-            <div class="device-label">Etiketler</div>
-            <div class="device-chip-row">
-              <span class="chip">Maaş hesabı</span>
-              <span class="chip secondary">Favori</span>
-              <span class="chip secondary">Banka A</span>
-            </div>
-            <div class="device-footer">
-              <span>Son kullanım: 2 gün önce</span>
-              <div class="badge-row">
-                <span class="small-badge">Metinden eklendi</span>
-                <span class="small-badge">Güvenli</span>
-              </div>
-            </div>
-          </div>
-          <div class="floating-card">
-            <div class="floating-dot"></div>
-            <div>
-              <div><strong>Yeni IBAN bulundu</strong></div>
-              <div>Görseldeki IBAN kaydedilsin mi?</div>
-            </div>
-          </div>
-        </div>
-      </aside>
+      <section class="section">
+        <h2>Öne Çıkan Özellikler</h2>
+        <ul>
+          <li>Birden fazla IBAN kaydı ekleme ve düzenleme</li>
+          <li>IBAN notları ile banka/kişi bilgisini hızlıca hatırlama</li>
+          <li>Tek dokunuşla kopyalama ve paylaşma</li>
+          <li>Basit, sade ve reklama uygun arayüz tasarımı</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Gizlilik</h2>
+        <p>
+          IBAN verilerin yalnızca cihazında saklanır. Uygulama, AdMob reklamları dışında kişisel verilerini
+          üçüncü taraflarla paylaşmaz. Ayrıntılı bilgi için gizlilik politikasına göz atabilirsin.
+        </p>
+      </section>
     </main>
 
-    <section id="ozellikler" class="section">
-      <h2 class="section-title">Öne çıkan özellikler</h2>
-      <p class="section-text">
-        IBAN Kaydet - Paylaş, IBAN bilgilerini saklamayı günlük hayatın doğal ve pratik bir parçası haline getirir.
-        Basit arayüzüyle herkes için kullanması kolaydır.
-      </p>
-
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-title">Tüm IBAN’ların tek yerde</div>
-          <div class="feature-body">
-            Kendi hesabın ve para gönderdiğin herkes için ayrı kartlar oluştur.
-            Aynı kişiye ait birden fazla IBAN’ı düzenli biçimde sakla.
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">Metinden otomatik IBAN yakalama</div>
-          <div class="feature-body">
-            Mesaj, not veya e-posta içeriğindeki IBAN’ları otomatik algıla.
-            Kopyala–yapıştırla uğraşmadan tek dokunuşla kaydet.
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">Ekran görüntüsünden IBAN okuma</div>
-          <div class="feature-body">
-            Ekran görüntüsü veya fotoğraftaki IBAN’lar tespit edilip uygulamaya eklenir.
-            Kağıttan veya dekonttan IBAN yazma hatalarını azalt.
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">Kolay paylaşım ve kopyalama</div>
-          <div class="feature-body">
-            IBAN’ı tek dokunuşla kopyala, mesajla gönder veya paylaş menüsünü kullan.
-            Her seferinde IBAN yazmak zorunda kalma.
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">Arama ve etiketlerle düzen</div>
-          <div class="feature-body">
-            İsim, banka veya notlara göre hızla arama yap.
-            Aile, iş, arkadaşlar, favoriler gibi etiketlerle IBAN’larını düzenle.
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">Gizlilik ve güvenlik</div>
-          <div class="feature-body">
-            IBAN verilerin yalnızca senin kontrolündedir. Uygulama yerel cihazda çalışacak şekilde tasarlanmıştır.
-            Reklam ve analiz amaçlı üçüncü taraf hizmetler (ör. AdMob) sınırlı veriler toplayabilir.
-            Detaylar için <a href="privacy.html">Gizlilik Politikası</a>’nı inceleyebilirsin.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="iletisim" class="section">
-      <h2 class="section-title">İletişim</h2>
-      <p class="section-text">
-        Uygulama hakkında soruların, önerilerin veya geri bildirimlerin için bizimle e-posta üzerinden iletişime geçebilirsin:
-      </p>
-      <p class="section-text">
-        <strong>E-posta:</strong>
-        <a href="mailto:ozgun.gungor@hotmail.com">ozgun.gungor@hotmail.com</a>
-      </p>
-    </section>
-
     <footer>
-      <span>© <span id="year"></span> IBAN Kaydet - Paylaş. Tüm hakları saklıdır.</span>
-      <div class="footer-links">
-        <span>İletişim: <a href="mailto:ozgun.gungor@hotmail.com">ozgun.gungor@hotmail.com</a></span>
+      <div class="links">
+        <a href="mailto:ozgun.gungor@hotmail.com">İletişim: ozgun.gungor@hotmail.com</a> |
         <a href="privacy.html">Gizlilik Politikası</a>
       </div>
+      <div>© 2025 IBAN Kaydet - Paylaş</div>
     </footer>
   </div>
-
-  <script>
-    // Yılı otomatik güncelle
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
